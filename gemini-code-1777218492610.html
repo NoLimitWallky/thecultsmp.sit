@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cult MC</title>
+    <style>
+        :root {
+            --primary-green: #23a55a;
+            --discord-blurple: #5865f2;
+            --bg-dark: #0f0f0f;
+            --card-bg: #181818;
+            --text-gray: #b9bbbe;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: white;
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(15, 15, 15, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+
+        .nav-links a { color: var(--text-gray); text-decoration: none; font-size: 14px; }
+        .nav-links a.active { color: white; }
+
+        .hero { text-align: center; padding: 100px 20px; max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-size: 70px; margin: 0; font-weight: 800; }
+        .hero h1 span { color: var(--primary-green); }
+        .hero p { color: var(--text-gray); font-size: 18px; margin: 20px 0 40px; }
+
+        .btn-group { display: flex; justify-content: center; gap: 15px; }
+        .btn { padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; cursor: pointer; transition: 0.3s; border: none; }
+        .btn-connect { background-color: var(--primary-green); color: black; }
+        .btn-discord { background-color: var(--discord-blurple); color: white; }
+
+        .main-container { padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
+
+        .large-card {
+            background: var(--card-bg);
+            border: 1px solid #252525;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .card-content { padding: 50px; flex: 2; }
+        .card-sidebar { 
+            flex: 1; 
+            background: rgba(0,0,0,0.2); 
+            padding: 50px; 
+            border-left: 1px solid #252525; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .card-sidebar:hover { background: rgba(88, 101, 242, 0.1); }
+
+        .large-card h2 { font-size: 40px; margin: 10px 0; }
+        .large-card h2 span { color: var(--primary-green); }
+
+        .status-badge {
+            background: rgba(35, 165, 90, 0.1);
+            color: var(--primary-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot { width: 8px; height: 8px; background: var(--primary-green); border-radius: 50%; }
+
+        .ip-display { background: #222; padding: 10px 20px; border-radius: 8px; font-family: monospace; border: 1px solid #333; margin-left: 10px; }
+
+        @media (max-width: 768px) {
+            .large-card { flex-direction: column; }
+            .card-sidebar { border-left: none; border-top: 1px solid #252525; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">The Cult MC</div>
+        <div class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#">News</a>
+            <a href="#">Connect</a>
+            <a href="#">Features</a>
+        </div>
+        <div style="width: 40px;"></div>
+    </nav>
+
+    <div class="hero">
+        <h1>The <span>Cult</span> MC</h1>
+        <p>A Minecraft server built for Java & Bedrock — join the cult, build your legacy.</p>
+        
+        <div class="btn-group">
+            <button class="btn btn-connect" onclick="copyIP()">Join Now</button>
+            <button class="btn btn-discord" onclick="joinDiscord()">Join Discord</button>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="large-card">
+            <div class="card-content">
+                <h3 style="color: var(--text-gray); font-size: 12px;">The Cult MC — Minecraft Server</h3>
+                <h2>Join the Cult,<br>Rule the <span>World</span></h2>
+                <p style="color: var(--text-gray);">Cross-platform Minecraft survival with a tight-knit community.</p>
+                
+                <div style="display: flex; align-items: center; margin-top: 30px;">
+                    <button class="btn btn-connect" onclick="copyIP()" style="padding: 10px 20px;">Join Now</button>
+                    <div class="ip-display">thecultmc.xyz</div>
+                </div>
+            </div>
+            
+            <div class="card-sidebar" onclick="joinDiscord()">
+                <p style="font-size: 10px; margin: 0; color: var(--text-gray);">COMMUNITY</p>
+                <h4 style="margin: 5px 0 20px;">The Cult MC</h4>
+                <div class="status-badge">
+                    <span class="dot"></span>
+                    1k+ Discord Members
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function joinDiscord() {
+            window.open("https://discord.com/invite/rXcepqVtZE", "_blank");
+        }
+
+        function copyIP() {
+            navigator.clipboard.writeText("thecultmc.xyz");
+            alert("✅ IP Copied: thecultmc.xyz");
+        }
+    </script>
+</body>
+</html>
